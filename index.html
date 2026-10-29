@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMR Indonesia - Palang Merah Remaja</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pmi: {
+                            red: '#E50914',
+                            darkred: '#B20710',
+                            lightred: '#FFECEC',
+                            gray: '#F4F5F7',
+                            dark: '#1F2937',
+                            blue: '#0284C7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-hero {
+            background: linear-gradient(135deg, rgba(229,9,20,0.95) 0%, rgba(178,7,16,0.9) 100%), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(229, 9, 20, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="#beranda" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-pmi-red rounded-full flex items-center justify-center text-white shadow-md transform group-hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-plus text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold text-gray-900 tracking-tight block">PMR INDONESIA</span>
+                        <span class="text-xs font-semibold text-pmi-red tracking-wider uppercase block">Palang Merah Remaja</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-4">
+                    <a href="#beranda" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-pmi-red hover:bg-pmi-lightred transition">Beranda</a>
+                    <a href="#profil" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-pmi-red hover:bg-pmi-lightred transition">Profil & Tingkatan</a>
+                    <a href="#prinsip" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-pmi-red hover:bg-pmi-lightred transition">7 Prinsip</a>
+                    <a href="#tribakti" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-pmi-red hover:bg-pmi-lightred transition">Tri Bakti</a>
+                    <a href="#materi" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-pmi-red hover:bg-pmi-lightred transition">Materi Utama</a>
+                    <a href="#siaga" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-pmi-red hover:bg-pmi-lightred transition">Tas Siaga</a>
+                    <a href="#kuis" class="ml-2 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-pmi-red hover:bg-pmi-darkred shadow-md hover:shadow-lg transition">Kuis PMR</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="p-2 rounded-md text-gray-600 hover:text-pmi-red hover:bg-gray-100 focus:outline-none" aria-label="Menu Mobile">
+                        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-1">
+            <a href="#beranda" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-pmi-lightred hover:text-pmi-red">Beranda</a>
+            <a href="#profil" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-pmi-lightred hover:text-pmi-red">Profil & Tingkatan</a>
+            <a href="#prinsip" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-pmi-lightred hover:text-pmi-red">7 Prinsip</a>
+            <a href="#tribakti" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-pmi-lightred hover:text-pmi-red">Tri Bakti</a>
+            <a href="#materi" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-pmi-lightred hover:text-pmi-red">Materi Utama</a>
+            <a href="#siaga" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-pmi-lightred hover:text-pmi-red">Tas Siaga Bencana</a>
+            <a href="#kuis" class="mobile-link block px-3 py-2 rounded-md text-base font-medium bg-pmi-red text-white text-center mt-2">Kuis Interaktif</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="relative text-white gradient-hero py-24 lg:py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-white/30">
+                <i class="fa-solid fa-heart-pulse text-red-300"></i>
+                <span>Siamo Tutti Fratelli — Kita Semua Bersaudara</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
+                Palang Merah Remaja <br class="hidden sm:inline"><span class="text-yellow-300">Indonesia</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-100 font-light mb-8 leading-relaxed">
+                Wadah pembinaan dan pengembangan anggota remaja PMI. Menciptakan generasi muda yang berjiwa kemanusiaan, terampil, tanggap, dan berakhlak mulia.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#materi" class="w-full sm:w-auto px-8 py-4 bg-white text-pmi-red hover:bg-gray-100 font-bold rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Pelajari Materi PMR</span>
+                </a>
+                <a href="#kuis" class="w-full sm:w-auto px-8 py-4 bg-pmi-darkred border border-red-400 text-white hover:bg-red-900 font-bold rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>Uji Kemampuan (Kuis)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFIL & TINGKATAN PMR -->
+    <section id="profil" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-pmi-red font-bold uppercase tracking-wider text-sm">Mengenal PMR</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Profil & Tingkatan PMR</h2>
+                <p class="text-gray-600 mt-4 text-lg">PMR dibagi menjadi 3 tingkatan berdasarkan jenjang pendidikan dan usia untuk mengoptimalkan proses pembinaan.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- PMR Mula -->
+                <div class="bg-gradient-to-b from-green-50 to-white rounded-2xl p-8 border border-green-200 custom-shadow transition hover:-translate-y-1 relative overflow-hidden">
+                    <div class="w-12 h-12 bg-green-500 text-white rounded-xl flex items-center justify-center mb-6 text-xl font-bold">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full uppercase">Tingkat SD / Sederajat</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mt-3 mb-2">PMR MULA</h3>
+                    <p class="text-sm font-semibold text-green-700 mb-4">Usia 10 – 12 Tahun (Pita Hijau)</p>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Fokus pada pembentukan karakter dasar kepemimpinan, pengenalan nilai kemanusiaan, dan kebiasaan hidup bersih dan sehat sehari-hari.
+                    </p>
+                    <ul class="text-sm text-gray-700 space-y-2 border-t border-green-100 pt-4">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Peran: Peer Leader (Pemimpin Sebaya)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Mengenal Perilaku Hidup Bersih & Sehat</li>
+                    </ul>
+                </div>
+
+                <!-- PMR Madya -->
+                <div class="bg-gradient-to-b from-blue-50 to-white rounded-2xl p-8 border border-blue-200 custom-shadow transition hover:-translate-y-1 relative overflow-hidden">
+                    <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center mb-6 text-xl font-bold">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full uppercase">Tingkat SMP / Sederajat</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mt-3 mb-2">PMR MADYA</h3>
+                    <p class="text-sm font-semibold text-blue-700 mb-4">Usia 12 – 15 Tahun (Pita Biru)</p>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Menekankan pada pengembangan keterampilan pertolongan pertama dasar, kepemimpinan tim, serta kepedulian terhadap lingkungan sosial.
+                    </p>
+                    <ul class="text-sm text-gray-700 space-y-2 border-t border-blue-100 pt-4">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-blue-500 mr-2"></i> Peran: Peer Support (Pendukung Sebaya)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-blue-500 mr-2"></i> Keterampilan Pertolongan Pertama Dasar</li>
+                    </ul>
+                </div>
+
+                <!-- PMR Wira -->
+                <div class="bg-gradient-to-b from-red-50 to-white rounded-2xl p-8 border border-red-200 custom-shadow transition hover:-translate-y-1 relative overflow-hidden">
+                    <div class="w-12 h-12 bg-pmi-red text-white rounded-xl flex items-center justify-center mb-6 text-xl font-bold">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded-full uppercase">Tingkat SMA / Sederajat</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mt-3 mb-2">PMR WIRA</h3>
+                    <p class="text-sm font-semibold text-pmi-red mb-4">Usia 15 – 17 Tahun (Pita Kuning)</p>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Siap menjadi pendidik sebaya dalam bidang kesehatan dan kemanusiaan, aktif dalam aksi sosial kebencanaan serta donor darah sukarela.
+                    </p>
+                    <ul class="text-sm text-gray-700 space-y-2 border-t border-red-100 pt-4">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-pmi-red mr-2"></i> Peran: Peer Educator (Pendidik Sebaya)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-pmi-red mr-2"></i> Pengorganisasian Bencana & Donor Darah</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 PRINSIP DASAR -->
+    <section id="prinsip" class="py-20 bg-gray-50 border-t border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-pmi-red font-bold uppercase tracking-wider text-sm">Pedoman Gerakan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">7 Prinsip Dasar Palang Merah</h2>
+                <p class="text-gray-600 mt-4 text-lg">Prinsip dasar Gerakan Palang Merah dan Bulan Sabit Merah Internasional yang wajib dihayati seluruh anggota PMR.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 text-pmi-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">1. Kemanusiaan</h3>
+                    <p class="text-sm text-gray-600">Mencegah dan meringankan penderitaan manusia di mana pun berada, melindungi jiwa dan kesehatan.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 text-pmi-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">2. Kesamaan</h3>
+                    <p class="text-sm text-gray-600">Tidak membedakan kebangsaan, ras, agama, tingkat sosial, atau pandangan politik.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 text-pmi-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-dove"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">3. Netralitas</h3>
+                    <p class="text-sm text-gray-600">Tidak memihak pada pihak yang bertikai dan tidak terlibat dalam pertentangan politik, ras, atau agama.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 text-pmi-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">4. Kemandirian</h3>
+                    <p class="text-sm text-gray-600">Otonom dan independen. Selalu mempertahankan otonomi agar dapat bertindak sesuai prinsip.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 text-pmi-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-hands-helping"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">5. Kesukarelaan</h3>
+                    <p class="text-sm text-gray-600">Gerakan penolong sukarela yang tidak didasari oleh keinginan untuk mencari keuntungan apapun.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 text-pmi-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-dharmachakra"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">6. Kesatuan</h3>
+                    <p class="text-sm text-gray-600">Di setiap negara hanya ada satu perhimpunan Palang Merah/Bulan Sabit Merah yang terbuka untuk umum.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 sm:col-span-2 lg:col-span-2">
+                    <div class="w-12 h-12 bg-red-100 text-pmi-red rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">7. Kesemestaan</h3>
+                    <p class="text-sm text-gray-600">Gerakan hadir di seluruh dunia, mempunyai status yang setara serta hak dan tanggung jawab yang sama dalam membantu sesama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRI BAKTI PMR -->
+    <section id="tribakti" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-pmi-red to-pmi-darkred rounded-3xl p-8 sm:p-12 text-white shadow-xl">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Komitmen Anggota</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-3">Tri Bakti PMR</h2>
+                    <p class="text-red-100 mt-2">Tiga tugas pokok kewajiban anggota Palang Merah Remaja</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+                        <div class="text-3xl font-black text-yellow-300 mb-3">01</div>
+                        <h3 class="text-xl font-bold mb-2">Meningkatkan Keterampilan Hidup Sehat</h3>
+                        <p class="text-sm text-red-100">Memulai kebiasaan hidup bersih dan sehat dari diri sendiri, keluarga, hingga lingkungan sekolah.</p>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+                        <div class="text-3xl font-black text-yellow-300 mb-3">02</div>
+                        <h3 class="text-xl font-bold mb-2">Berkarya dan Berbakti di Masyarakat</h3>
+                        <p class="text-sm text-red-100">Aktif melakukan aksi sosial kemanusiaan, bakti sosial, dan kesiapsiagaan bencana sekitar.</p>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+                        <div class="text-3xl font-black text-yellow-300 mb-3">03</div>
+                        <h3 class="text-xl font-bold mb-2">Mempererat Persahabatan Nasional & Internasional</h3>
+                        <p class="text-sm text-red-100">Menjalin komunikasi, pertukaran pengetahuan, dan persahabatan antar anggota PMR tanpa sekat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATERI UTAMA PMR (INTERAKTIF) -->
+    <section id="materi" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-pmi-red font-bold uppercase tracking-wider text-sm">Modul Pembelajaran</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Materi Utama PMR</h2>
+                <p class="text-gray-600 mt-3">Pilih topik materi di bawah ini untuk mempelajari langkah-langkah praktis dan detail medis dasar.</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="materi-tabs">
+                <button onclick="switchTab('pp')" id="tab-pp" class="materi-tab-btn active-tab px-5 py-3 rounded-xl font-semibold text-sm transition shadow-sm bg-pmi-red text-white">
+                    <i class="fa-solid fa-kit-medical mr-2"></i>Pertolongan Pertama (PP)
+                </button>
+                <button onclick="switchTab('kebencanaan')" id="tab-kebencanaan" class="materi-tab-btn px-5 py-3 rounded-xl font-semibold text-sm transition shadow-sm bg-white text-gray-700 hover:bg-gray-100">
+                    <i class="fa-solid fa-house-chimney-crack mr-2"></i>Kebencanaan
+                </button>
+                <button onclick="switchTab('rsjr')" id="tab-rsjr" class="materi-tab-btn px-5 py-3 rounded-xl font-semibold text-sm transition shadow-sm bg-white text-gray-700 hover:bg-gray-100">
+                    <i class="fa-solid fa-heart-circle-check mr-2"></i>Remaja Sehat Jiwa Raga
+                </button>
+                <button onclick="switchTab('donor')" id="tab-donor" class="materi-tab-btn px-5 py-3 rounded-xl font-semibold text-sm transition shadow-sm bg-white text-gray-700 hover:bg-gray-100">
+                    <i class="fa-solid fa-droplet mr-2"></i>Donor Darah
+                </button>
+            </div>
+
+            <!-- Tab Content Container -->
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-200 custom-shadow">
+                
+                <!-- CONTENT 1: PERTOLONGAN PERTAMA -->
+                <div id="content-pp" class="materi-content block">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-red-100 text-pmi-red rounded-xl">
+                            <i class="fa-solid fa-suitcase-medical text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Pertolongan Pertama (PP)</h3>
+                            <p class="text-sm text-gray-500">Pemberian pertolongan segera kepada penderita sakit/cedera sebelum penanganan medis ahli.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <!-- Sub Card 1: DRABC -->
+                        <div class="border border-gray-200 rounded-2xl p-5 hover:border-pmi-red transition">
+                            <span class="text-xs font-bold text-pmi-red bg-red-50 px-2.5 py-1 rounded-full">Langkah Utama</span>
+                            <h4 class="text-lg font-bold text-gray-900 mt-3 mb-2">Prinsip DRABC</h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li><strong>D (Danger):</strong> Pastikan keamanan lokasi penolong, korban, dan lingkungan.</li>
+                                <li><strong>R (Response):</strong> Cek kesadaran korban (Panggil / Tepuk bahu).</li>
+                                <li><strong>A (Airway):</strong> Buka jalan napas (Tekan dahi angkat dagu).</li>
+                                <li><strong>B (Breathing):</strong> Cek napas (Lihat, Dengar, Rasakan 10 detik).</li>
+                                <li><strong>C (Circulation):</strong> Cek nadi leher dan kontrol pendarahan parah.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Sub Card 2: Perdarahan -->
+                        <div class="border border-gray-200 rounded-2xl p-5 hover:border-pmi-red transition">
+                            <span class="text-xs font-bold text-pmi-red bg-red-50 px-2.5 py-1 rounded-full">Penanganan Luka</span>
+                            <h4 class="text-lg font-bold text-gray-900 mt-3 mb-2">Penanganan Perdarahan</h4>
+                            <ol class="text-sm text-gray-600 space-y-2 list-decimal list-inside">
+                                <li><strong>Tekan Langsung:</strong> Tekan area luka dengan kasa steril / kain bersih.</li>
+                                <li><strong>Elevasi:</strong> Tinggikan bagian luka melebihi posisi jantung (jika tak ada patah tulang).</li>
+                                <li><strong>Balut Tekan:</strong> Ikat dengan pembalut mitela atau perban elastis.</li>
+                                <li>Jangan melepas penutup pertama jika darah merembes, tambahkan penutup di atasnya.</li>
+                            </ol>
+                        </div>
+
+                        <!-- Sub Card 3: Patah Tulang -->
+                        <div class="border border-gray-200 rounded-2xl p-5 hover:border-pmi-red transition">
+                            <span class="text-xs font-bold text-pmi-red bg-red-50 px-2.5 py-1 rounded-full">Pembidaian</span>
+                            <h4 class="text-lg font-bold text-gray-900 mt-3 mb-2">Patah Tulang (Fraktur)</h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li><i class="fa-solid fa-angle-right text-pmi-red mr-1"></i> Jaga posisi korban tetap tenang dan imobilisasi (jangan banyak digerakkan).</li>
+                                <li><i class="fa-solid fa-angle-right text-pmi-red mr-1"></i> Pasang <strong>Bidai (Spalk)</strong> melewati dua sendi di antara tulang yang patah.</li>
+                                <li><i class="fa-solid fa-angle-right text-pmi-red mr-1"></i> Ikat bidai dengan mitela secara memadai (tidak terlalu kencang / longgar).</li>
+                                <li><i class="fa-solid fa-angle-right text-pmi-red mr-1"></i> Cek sirkulasi nadi di ujung ekstremitas setelah dibidai.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT 2: KEBENCANAAN -->
+                <div id="content-kebencanaan" class="materi-content hidden">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-orange-100 text-orange-600 rounded-xl">
+                            <i class="fa-solid fa-triangle-exclamation text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Ayo Siaga Bencana (Ayu Siaga)</h3>
+                            <p class="text-sm text-gray-500">Materi kesiapsiagaan mengurangi risiko bencana berbasis masyarakat dan keluarga.</p>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-base text-gray-900 mb-2"><i class="fa-solid fa-shield-halved text-orange-500 mr-2"></i> Pra-Bencana (Pencegahan)</h4>
+                            <p class="mb-2">Mengenali potensi bahaya sekitar (Gempa, Banjir, Kebakaran), menentukan titik kumpul keluarga, dan menyusun Tas Siaga Bencana (TSB).</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-200">
+                            <h4 class="font-bold text-base text-gray-900 mb-2"><i class="fa-solid fa-bell text-red-500 mr-2"></i> Saat & Pasca Bencana</h4>
+                            <p class="mb-2">Tetap tenang, berlindung di bawah meja kukuh saat gempa (Drop, Cover, Hold On), evakuasi ke jalur aman, dan hindari struktur bangunan yang retak.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT 3: REMAJA SEHAT JIWA RAGA -->
+                <div id="content-rsjr" class="materi-content hidden">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-blue-100 text-blue-600 rounded-xl">
+                            <i class="fa-solid fa-face-smile text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Remaja Sehat Jiwa Raga (RSJR)</h3>
+                            <p class="text-sm text-gray-500">Pendidikan kesehatan reproduksi, gaya hidup bersih, serta kebersihan jiwa remaja.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <p class="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                            <strong>Kesehatan Reproduksi Remaja (KRR):</strong> Memahami perubahan fisik dan psikologis masa pubertas, menjaga kebersihan organ reproduksi, serta menghindari perilaku berisiko.
+                        </p>
+                        <p class="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                            <strong>Bahaya Napza & Merokok:</strong> Edukasi bahaya pengaruh zat adiktif, alkohol, serta keterampilan menolak tekanan sebaya (Peer Pressure).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CONTENT 4: DONOR DARAH -->
+                <div id="content-donor" class="materi-content hidden">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-red-100 text-pmi-red rounded-xl">
+                            <i class="fa-solid fa-hand-holding-droplet text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Donor Darah Sukarela (DDS)</h3>
+                            <p class="text-sm text-gray-500">Materi kepedulian donor darah sejak dini dan syarat teknis menjadi pendonor.</p>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm">
+                        <div class="border border-gray-200 p-5 rounded-2xl">
+                            <h4 class="font-bold text-gray-900 mb-3 text-base">Syarat Utama Donor Darah:</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li><i class="fa-solid fa-circle-check text-green-500 mr-2"></i> Usia 17 – 60 Tahun</li>
+                                <li><i class="fa-solid fa-circle-check text-green-500 mr-2"></i> Berat Badan minimal 45 Kg</li>
+                                <li><i class="fa-solid fa-circle-check text-green-500 mr-2"></i> Tekanan darah normal (Sistole 100-170, Diastole 70-100)</li>
+                                <li><i class="fa-solid fa-circle-check text-green-500 mr-2"></i> Kadar Hemoglobin (Hb) 12,5 - 17,0 g/dl</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 p-5 rounded-2xl text-red-900">
+                            <h4 class="font-bold mb-2 text-base">Manfaat Donor Darah:</h4>
+                            <p class="leading-relaxed">Menjaga kesehatan jantung, merangsang pembentukan sel darah baru secara berkala, mendeteksi penyakit serius secara dini, dan membantu menyelamatkan nyawa sesama.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TAS SIAGA BENCANA (CHECKLIST INTERAKTIF) -->
+    <section id="siaga" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <span class="text-pmi-red font-bold uppercase tracking-wider text-sm">Simulasi Mandiri</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 mb-4">Tas Siaga Bencana (TSB)</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Tas Siaga Bencana adalah tas darurat yang disiapkan untuk bertahan hidup setidaknya 3x24 jam pertama saat terjadi bencana mendadak.
+                    </p>
+                    <div class="bg-pmi-lightred border-l-4 border-pmi-red p-4 rounded-r-xl mb-6">
+                        <p class="text-sm text-pmi-darkred font-medium">
+                            <i class="fa-solid fa-lightbulb mr-2"></i>Gunakan simulasi checklist di samping untuk memeriksa kelengkapan tas Anda di rumah!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-gray-50 rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center justify-between">
+                        <span>Checklist Perlengkapan TSB</span>
+                        <span id="tsb-progress-text" class="text-sm font-semibold text-pmi-red">0/8 Terisi</span>
+                    </h3>
+
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                        <div id="tsb-progress-bar" class="bg-pmi-red h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-3" id="tsb-checklist">
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Dokumen / Surat Penat penting</span>
+                        </label>
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Air Minum & Makanan Awet</span>
+                        </label>
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Kotak P3K Lengkap & Obat Pribadi</span>
+                        </label>
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Senter & Baterai Cadangan</span>
+                        </label>
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Peluit Darurat</span>
+                        </label>
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Pakaian Ganti & Jas Hujan</span>
+                        </label>
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Uang Tunai Secukupnya</span>
+                        </label>
+                        <label class="flex items-center space-x-3 bg-white p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
+                            <input type="checkbox" onchange="updateTSB()" class="tsb-item w-5 h-5 text-pmi-red rounded focus:ring-pmi-red">
+                            <span class="text-sm font-medium text-gray-700">Masker & Hand Sanitizer</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KUIS INTERAKTIF PMR -->
+    <section id="kuis" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-yellow-400 font-bold uppercase tracking-wider text-sm">Evaluasi Pemahaman</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Kuis Interaktif PMR</h2>
+                <p class="text-gray-400 mt-2">Uji pemahamanmu seputar Pertolongan Pertama dan Kepalangmerahan.</p>
+            </div>
+
+            <!-- Quiz Box -->
+            <div class="bg-gray-800 rounded-3xl p-6 sm:p-10 border border-gray-700 shadow-2xl relative">
+                
+                <!-- Quiz Screen Start -->
+                <div id="quiz-start" class="text-center py-8">
+                    <div class="w-20 h-20 bg-pmi-red/20 text-pmi-red rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Siap Menguji Pengetahuanmu?</h3>
+                    <p class="text-gray-400 max-w-md mx-auto mb-8 text-sm">Kuis terdiri dari 5 soal pilihan ganda. Dapatkan skor dan evaluasi langsung setelah selesai!</p>
+                    <button onclick="startQuiz()" class="px-8 py-3.5 bg-pmi-red hover:bg-pmi-darkred text-white font-bold rounded-xl shadow-lg transition">
+                        Mulai Kuis Sekarang
+                    </button>
+                </div>
+
+                <!-- Quiz Screen Questions -->
+                <div id="quiz-body" class="hidden">
+                    <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-4">
+                        <span id="quiz-progress" class="text-xs font-bold text-yellow-400 uppercase tracking-wider">Soal 1 dari 5</span>
+                        <span id="quiz-score-badge" class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Skor: 0</span>
+                    </div>
+
+                    <h3 id="quiz-question" class="text-lg sm:text-xl font-bold mb-6 leading-snug">
+                        <!-- Question Text Inserted Here -->
+                    </h3>
+
+                    <div id="quiz-options" class="space-y-3 mb-8">
+                        <!-- Options Inserted Here -->
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl mb-6 text-sm font-medium"></div>
+
+                    <div class="flex justify-end">
+                        <button id="next-btn" onclick="nextQuestion()" class="hidden px-6 py-2.5 bg-pmi-red hover:bg-pmi-darkred text-white font-bold rounded-lg transition">
+                            Soal Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Screen Result -->
+                <div id="quiz-result" class="hidden text-center py-8">
+                    <div class="w-20 h-20 bg-yellow-500/20 text-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Kuis Selesai!</h3>
+                    <p class="text-gray-400 mb-6 text-sm">Hasil evaluasi pemahaman Anda:</p>
+                    <div class="text-5xl font-black text-white mb-4" id="final-score">0 / 100</div>
+                    <p id="final-message" class="text-gray-300 text-sm mb-8 max-w-md mx-auto"></p>
+                    <button onclick="restartQuiz()" class="px-8 py-3.5 bg-pmi-red hover:bg-pmi-darkred text-white font-bold rounded-xl shadow-lg transition">
+                        Ulangi Kuis
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / KONTAK -->
+    <footer id="kontak" class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-pmi-red rounded-full flex items-center justify-center text-white">
+                            <i class="fa-solid fa-plus text-sm"></i>
+                        </div>
+                        <span class="text-lg font-extrabold text-white">PMR INDONESIA</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-gray-400">
+                        Palang Merah Remaja (PMR) adalah wadah pembinaan generasi muda Palang Merah Indonesia untuk membangun jiwa kemanusiaan, solidaritas, dan kesiapsiagaan kesehatan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Slogan Kemandirian</h4>
+                    <p class="text-sm italic text-gray-300 mb-2">"Siamo Tutti Fratelli"</p>
+                    <p class="text-xs text-gray-500">Slogan internasional Gerakan Palang Merah yang berarti "Kita Semua Bersaudara".</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Layanan Darurat</h4>
+                    <p class="text-xs text-gray-400 mb-2">Jika terjadi keadaan darurat, hubungi kontak medis terdekat:</p>
+                    <div class="text-pmi-red font-bold text-lg flex items-center space-x-2">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>PMI Call Center: 119 / (021) 7992325</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+                &copy; 2026 PMR Indonesia Educational Portal. Dibuat untuk edukasi dan kepalangmerahan.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // MOBILE MENU TOGGLE
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // TAB SWITCHER MATERI
+        function switchTab(tabId) {
+            // Hide all content
+            const contents = document.querySelectorAll('.materi-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            // Reset tab styles
+            const tabs = document.querySelectorAll('.materi-tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-pmi-red', 'text-white');
+                tab.classList.add('bg-white', 'text-gray-700');
+            });
+
+            // Show current content
+            document.getElementById(`content-${tabId}`).classList.remove('hidden');
+
+            // Active tab style
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            activeTab.classList.remove('bg-white', 'text-gray-700');
+            activeTab.classList.add('bg-pmi-red', 'text-white');
+        }
+
+        // TAS SIAGA BENCANA CHECKLIST
+        function updateTSB() {
+            const checkboxes = document.querySelectorAll('.tsb-item');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const total = checkboxes.length;
+            const percentage = (checkedCount / total) * 100;
+
+            document.getElementById('tsb-progress-bar').style.width = percentage + '%';
+            document.getElementById('tsb-progress-text').innerText = `${checkedCount}/${total} Terisi`;
+        }
+
+        // KUIS INTERAKTIF LOGIC
+        const quizData = [
+            {
+                question: "Apa arti dari slogan kepalangmerahan 'Siamo Tutti Fratelli'?",
+                options: [
+                    "Kita Adalah Penolong",
+                    "Kita Semua Bersaudara",
+                    "Palang Merah Selalu Ada",
+                    "Setetes Darah Nyawa Kita"
+                ],
+                correct: 1,
+                explanation: "'Siamo Tutti Fratelli' berasal dari bahasa Italia yang diciptakan saat Pertempuran Solferino, yang berarti 'Kita Semua Bersaudara'."
+            },
+            {
+                question: "Langkah pertama dalam prinsip dasar penanganan Pertolongan Pertama (DRABC) adalah...",
+                options: [
+                    "Breathing (Napas)",
+                    "Response (Respon)",
+                    "Danger (Bahaya/Keamanan)",
+                    "Airway (Jalan Napas)"
+                ],
+                correct: 2,
+                explanation: "Danger (Keamanan) adalah hal pertama yang wajib dipastikan untuk keselamatan penolong, korban, dan lingkungan sekitar."
+            },
+            {
+                question: "Tingkatan PMR untuk siswa SMP / usia 12–15 tahun dinamakan PMR...",
+                options: [
+                    "Mula",
+                    "Madya",
+                    "Wira",
+                    "Relawan"
+                ],
+                correct: 1,
+                explanation: "PMR Madya ditujukan bagi jenjang SMP/sederajat dengan identitas warna pita biru."
+            },
+            {
+                question: "Prinsip dasar yang menegaskan bahwa Palang Merah tidak memihak dalam pertentangan politik, ras, atau agama adalah...",
+                options: [
+                    "Kemandirian",
+                    "Netralitas",
+                    "Kesatuan",
+                    "Kesemestaan"
+                ],
+                correct: 1,
+                explanation: "Prinsip Netralitas menjaga kepercayaan semua pihak agar gerakan dapat membantu siapapun tanpa diskriminasi."
+            },
+            {
+                question: "Salah satu syarat medis dasar untuk menjadi pendonor darah sukarela adalah memiliki berat badan minimal...",
+                options: [
+                    "35 Kg",
+                    "40 Kg",
+                    "45 Kg",
+                    "55 Kg"
+                ],
+                correct: 2,
+                explanation: "Berat badan minimal pendonor darah di Indonesia adalah 45 kg untuk menjamin keselamatan volume darah pendonor."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function startQuiz() {
+            document.getElementById('quiz-start').classList.add('hidden');
+            document.getElementById('quiz-body').classList.remove('hidden');
+            currentQuestion = 0;
+            score = 0;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const q = quizData[currentQuestion];
+            document.getElementById('quiz-progress').innerText = `Soal ${currentQuestion + 1} dari ${quizData.length}`;
+            document.getElementById('quiz-score-badge').innerText = `Skor: ${score}`;
+            document.getElementById('quiz-question').innerText = q.question;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.add('hidden');
+
+            document.getElementById('next-btn').classList.add('hidden');
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl bg-gray-700 hover:bg-gray-600 transition text-sm font-medium border border-gray-600 flex justify-between items-center";
+                btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle"></i>`;
+                btn.onclick = () => checkAnswer(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIdx, selectedBtn) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizData[currentQuestion];
+            const optionsBtns = document.getElementById('quiz-options').children;
+            const feedback = document.getElementById('quiz-feedback');
+
+            if (selectedIdx === q.correct) {
+                score += 20;
+                selectedBtn.className = "w-full text-left p-4 rounded-xl bg-green-900/60 border-2 border-green-500 text-green-200 text-sm font-medium flex justify-between items-center";
+                selectedBtn.querySelector('i').className = "fa-solid fa-circle-check text-green-400 text-lg";
+                feedback.className = "p-4 rounded-xl mb-6 text-sm font-medium bg-green-900/40 text-green-300 border border-green-700";
+                feedback.innerText = "Benar! " + q.explanation;
+            } else {
+                selectedBtn.className = "w-full text-left p-4 rounded-xl bg-red-900/60 border-2 border-red-500 text-red-200 text-sm font-medium flex justify-between items-center";
+                selectedBtn.querySelector('i').className = "fa-solid fa-circle-xmark text-red-400 text-lg";
+                
+                // Highlight correct option
+                optionsBtns[q.correct].className = "w-full text-left p-4 rounded-xl bg-green-900/40 border border-green-500 text-green-300 text-sm font-medium flex justify-between items-center";
+                optionsBtns[q.correct].querySelector('i').className = "fa-solid fa-circle-check text-green-400";
+
+                feedback.className = "p-4 rounded-xl mb-6 text-sm font-medium bg-red-900/40 text-red-300 border border-red-700";
+                feedback.innerText = "Kurang tepat. " + q.explanation;
+            }
+
+            feedback.classList.remove('hidden');
+            document.getElementById('quiz-score-badge').innerText = `Skor: ${score}`;
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-body').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            
+            document.getElementById('final-score').innerText = `${score} / 100`;
+
+            const msg = document.getElementById('final-message');
+            if (score === 100) {
+                msg.innerText = "Luar biasa! Pemahamanmu tentang materi PMR dan Pertolongan Pertama sangat baik.";
+            } else if (score >= 60) {
+                msg.innerText = "Bagus sekali! Kamu sudah memahami dasar-dasar PMR dengan cukup matang.";
+            } else {
+                msg.innerText = "Tetap semangat! Pelajari kembali modul materi di atas untuk memperdalam pengetahuan PMR-mu.";
+            }
+        }
+
+        function restartQuiz() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            startQuiz();
+        }
+    </script>
+</body>
+</html>
